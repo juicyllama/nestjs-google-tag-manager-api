@@ -42,10 +42,11 @@ export class AuthController {
 		if (refresh_token) {
 			this.logger.log('Using refresh token to obtain access token')
 			const access_token = await this.authService.refreshToken(refresh_token)
-			return res.status(200).json({
+			res.status(200).json({
 				message: 'Authorization successful',
 				access_token: access_token,
 			})
+			return
 		}
 
 		if (!code) {
@@ -53,7 +54,7 @@ export class AuthController {
 		}
 
 		// Exchange the authorization code for an access token
-		const tokenResponse = await this.authService.exchangeCodeForToken(req.protocol, req.get('Host'), code)
+		const tokenResponse = await this.authService.exchangeCodeForToken(req.protocol, req.get('Host') as string, code)
 		if (!tokenResponse) {
 			throw new UnauthorizedException('Failed to obtain access token')
 		}
