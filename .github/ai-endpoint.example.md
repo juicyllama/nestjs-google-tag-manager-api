@@ -19,4 +19,4 @@ You should use `src/gtm/accounts/*` as a template
 11. Run prettier 
 12. Run build and make sure the application builds
 13. Run the test suite to ensure tests still pass.
-14. Create a PR for this new module from your feature branch to main.
+14. Create a PR for this new module from your feature branch to main using the Github CLI.
