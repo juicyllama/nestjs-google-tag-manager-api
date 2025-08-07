@@ -136,6 +136,8 @@ export class AuthService {
 		return this.requestAccessToken({
 			grant_type: 'refresh_token',
 			refresh_token: refreshToken,
+			client_id: this.config.GTM_CONSOLE_CLIENT_ID,
+			client_secret: this.config.GTM_CONSOLE_CLIENT_SECRET,
 		})
 	}
 
